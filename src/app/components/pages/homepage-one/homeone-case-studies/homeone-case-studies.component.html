@@ -1,0 +1,30 @@
+
+<script>
+    var module = document.getElementById("clamp-this-module");
+    console.log("It is Gone There")
+    $clamp(module, {clamp: 3});
+</script>
+<section class="case-study-area bg-fffbf5">
+    <div class="case-study-slides owl-carousel owl-theme">
+        <div class="single-case-study-item ptb-100" *ngFor="let singleCaseStudyItemContent of singleCaseStudyItem;">
+            <div class="container" >
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="case-study-content" >
+                            <span class="sub-title"><img src="assets/img/star-icon.png" alt="image" style="width: 50%; height: 50%;"> {{singleCaseStudyItemContent.subTitle}}</span>
+                            <h2>{{singleCaseStudyItemContent.title}}</h2>
+                            <div class = "line-clamp"><p >{{singleCaseStudyItemContent.introduction}}</p></div>
+                            <a routerLink="/case-studies/{{singleCaseStudyItemContent.id}}" class="default-btn"><i class="flaticon-view"></i>Details More<span></span></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="case-study-image">
+                            <a routerLink="/case-studies/{{singleCaseStudyItemContent.id}}" class="d-block"><img [src]="singleCaseStudyItemContent.img1" alt="image"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

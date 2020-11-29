@@ -1,0 +1,119 @@
+<app-error-page *ngIf="service_data.id == 'Not Found'; else service"></app-error-page>
+<ng-template #service>
+    <section *ngIf="service_data.id != 'Not Found'" class="page-title-area">
+        <div class="container">
+            <div class="page-title-content" *ngFor="let pageTitle of pageTitleArea;">
+                <h2>{{pageTitle.title}}</h2>
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/services">Services</a></li>
+                    <li>{{service_data.subTitle}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="shape-img1"><img src="assets/img/shape/shape1.svg" alt="image"></div>
+        <div class="shape-img2"><img src="assets/img/shape/shape2.png" alt="image"></div>
+        <div class="shape-img3"><img src="assets/img/shape/shape3.png" alt="image"></div>
+    </section>
+
+    <section class="services-details-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="services-details-image">
+                        <img [src]="service_data.labelImg" alt="image">
+                    </div>
+
+                    <div class="services-details-desc">
+                        <span class="sub-title">{{service_data.subTitle}}</span>
+                        <h3>{{service_data.title1}}</h3>
+                        <p>{{service_data.paragraphText1}}</p>
+
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="image">
+                                    <img [src]="service_data.img1" alt="image">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="content">
+                                    <h3>{{service_data.title2}}</h3>
+
+                                    <ul>
+                                        <li *ngFor="let ImportantFacts of servicesDetailsDescImportantFacts;">
+                                            {{ImportantFacts.title}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>{{service_data.paragraphText2}}</p>
+
+                        <h3>{{service_data.title3}}</h3>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6 col-md-6"
+                                *ngFor="let Application of servicesDetailsDescApplication;">
+                                <div class="single-industries-serve-box">
+                                    <div class="icon">
+                                        <i class="{{Application.icon}}"></i>
+                                    </div>
+
+                                    {{Application.title}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>{{service_data.title4}}</h3>
+
+                        <ul class="technologies-features">
+                            <li *ngFor="let TechnologiesFeatures of servicesDetailsDescTechnologiesFeatures;">
+                                <span>{{TechnologiesFeatures.title}}</span></li>
+                        </ul>
+
+                        <!--<div class="charts-image">
+                        <img [src]="DetailsDesc.img2" alt="image">
+                    </div>-->
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="services-details-info">
+                        <ul class="services-list">
+                            <li *ngFor="let ServicesList of serviceNameID;"><a *ngIf = "service_data.subTitle != ServicesList.id"
+                                    [routerLink]="['/services',ServicesList.id]">{{ServicesList.name}}</a></li>
+                        </ul>
+
+                        <div class="download-file">
+                            <h3>Brochures</h3>
+
+                            <ul>
+                                <li *ngFor="let DownloadFile of sidebarDownloadFile;"><a
+                                        routerLink="/{{DownloadFile.link}}">{{DownloadFile.title}} <i
+                                            class='{{DownloadFile.icon}}'></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="services-contact-info">
+                            <h3>Contact Info</h3>
+
+                            <ul>
+                                <li *ngFor="let ContactInfo of sidebarContactInfo;">
+                                    <div class="icon">
+                                        <i class='{{ContactInfo.icon}}'></i>
+                                    </div>
+                                    <span>{{ContactInfo.title}}:</span>
+                                    {{ContactInfo.subTitle}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+
+<!--<app-related-services></app-related-services>-->
